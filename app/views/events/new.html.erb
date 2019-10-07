@@ -1,0 +1,28 @@
+<% content_for :page_title, "New Event"%>
+<% content_for :page_subtitle, "Let's throw a party!"%>
+
+<%= form_with(model: @event, local: true) do |form|%>
+  <div class="field">
+    <%=form.label :title, class: "label" %>
+    <%=form.text_field :title, class: "input", placeholder: "Cumpleaños"%>
+  </div>
+  <div class="field">
+    <%=form.label :cover, class: "label"%>
+    <%=form.text_field :cover, class: "input", placeholder: "100"%>
+  </div>
+  <div class="field">
+    <%=form.label :date, class: "label"%>
+    <%=form.text_field :date, class: "input", placeholder: "2019-12-22"%>
+  </div>
+  <div class="field">
+    <%=form.label :location, class: "label"%>
+    <%=form.text_field :location, class: "input", placeholder: "Av. Lincoln 2234" %>
+  </div>
+  <div class="field">
+    <%=form.label :description, class: "label"%>
+    <%=form.text_area :description, class: "textarea", placeholder: "Because of reasons..."%>
+  </div>
+  <div class="field">
+    <%=form.submit class:"button is-link"%>
+  </div>
+<%end%>

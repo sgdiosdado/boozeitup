@@ -2,14 +2,41 @@
 <html>
   <head>
     <title>BoozeItUp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <section class="hero is-info is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            <%= yield :page_title%>
+          </h1>
+          <h2 class="subtitle">
+            <%= yield :page_subtitle%>
+          </h2>
+        </div>
+      </div>
+      <div class="hero-foot">
+    <nav class="tabs is-boxed is-fullwidth">
+      <div class="container">
+        <ul>
+          <li>
+            <%= link_to "Index", root_path%>
+          </li>
+          <li>
+            <%= link_to "New", event_new_path%>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+    </section>
+    <section class="container content_padding">
+      <%= yield %>
+    </section>
   </body>
 </html>

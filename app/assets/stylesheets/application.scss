@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bulma";
+ @import "spacing";
+
+ .content_padding {
+     padding: $size-4;
+ }

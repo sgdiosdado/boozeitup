@@ -1,0 +1,15 @@
+<div class="card m-b-md">
+        <div class="card-content">
+            <div class="media">
+                <div class="media-content">
+                    <p class="title is-4"><%= link_to event.title, event %></p>
+                    <p class="subtitle">$<%= event.cover %></p>
+                </div>
+            </div>
+            <div class="content"><%= event.description%></div>
+        </div>
+        <footer class="card-footer">
+            <%= link_to "Edit", event_edit_path(event), class: "card-footer-item"%>
+            <%= link_to "Delete", "#", class: "card-footer-item"%>
+        </footer>
+    </div>
