@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To use this early version of booze it up:
 
-Things you may want to cover:
+    1. Download or clone the project.
 
-* Ruby version
+    2. Open the terminal inside the project's directory.
 
-* System dependencies
+    3. Run `bundle install` to install the dependencies.
 
-* Configuration
+    4. Run `rails server` or `rails s` to open the server.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    5. Open the browser at `http://localhost:3000/`.
