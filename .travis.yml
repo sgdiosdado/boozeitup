@@ -10,4 +10,6 @@ rvm:
   - "2.6.3"
 script: 
   - "bundle install"
+  - "bundle exec rails webpacker:install "
+  - "bundle exec rails webpacker:compile"
   - "bundle exec rspec"
