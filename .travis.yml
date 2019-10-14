@@ -1,10 +1,13 @@
-language: ruby
-rvm:
-- 2.3.0
-- 2.2.4
-bundler_args: --jobs=2
-script:
-script:
-  - bundle exec rake db:setup
-  - bundle exec rake spec
+addons: 
+  chrome: stable
+before_script: 
+  - bundle exec rake db:create --all
+  - bundle exec rake db:migrate
+bundler_args: "--jobs=2"
 cache: bundler
+language: ruby
+rvm: 
+  - "2.6.3"
+script: 
+  - "bundle install"
+  - "bundle exec rspec"
