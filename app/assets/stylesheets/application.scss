@@ -14,9 +14,38 @@
  *= require_self
  */
 
- @import "bulma";
- @import "spacing";
+@import "bulma";
+@import "spacing";
 
- .content_padding {
-     padding: $size-4;
- }
+html {
+  height: 100vh;
+}
+body {
+  height: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+.content_padding {
+  padding: $size-4;
+}
+.is-justify-around {
+  justify-content: space-around;
+}
+.menu {
+  transform: translateX(100%);
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 70%;
+  &-item {
+    @extend .navbar-item;
+  }
+  transition: transform 0.3s ease;
+}
+.open {
+  transform: translateX(0);
+}
+a.navbar-item:hover {
+  background: none;
+}

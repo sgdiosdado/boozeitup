@@ -8,7 +8,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
+  <body class="has-navbar-fixed-bottom">
     <section class="hero is-info is-bold">
       <div class="hero-body">
         <div class="container">
@@ -25,9 +25,6 @@
       <div class="container">
         <ul>
           <li>
-            <%= link_to "Index", root_path%>
-          </li>
-          <li>
             <%= link_to "New", event_new_path%>
           </li>
         </ul>
@@ -38,5 +35,16 @@
     <section class="container content_padding">
       <%= yield %>
     </section>
+    <nav class="navbar is-fixed-bottom" role="navigation" aria-label="main navigation">
+      <div class="navbar-menu is-flex is-justify-around has-background-dark">
+      <%= link_to "Home", root_path, class: "navbar-item has-text-white"%>
+      <a class="navbar-item has-text-white" id="toggle">Menu</a>
+      </div>
+    </nav>
+    <div class="menu has-background-dark p-md" id="menu">
+        <%= link_to "Parties I organize", my_events_path, class: "menu-item m-b-md has-text-white"%>
+        <%= link_to "Parties I'm going", my_asists_path, class: "menu-item m-b-md has-text-white"%>
+      </div>
+      <%= javascript_pack_tag 'contentLoaded', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>

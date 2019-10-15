@@ -1,4 +1,9 @@
 <%= content_for :page_title, @event.title%>
-<%= content_for :page_subtitle, @event.date%>
+<%= content_for :page_subtitle, @event.date.to_date.to_formatted_s(:long) %>
 
+<p><strong>Description</strong></p>
 <p><%= @event.description %></p>
+<p><strong>Cover</strong></p>
+<p>$<%= number_with_precision(@event.cover, precision:2) %></p>
+<p><strong>Location</strong></p>
+<p><%= @event.location %></p>

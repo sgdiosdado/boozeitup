@@ -1,8 +1,7 @@
 class EventsController < ApplicationController
-    before_action :find_event, except: [:index, :create, :new]
+    before_action :find_event, except: [:index, :create, :new, :my_events, :my_asists]
     
     def index
-        @events = Event.all
     end
 
     def show
@@ -13,6 +12,13 @@ class EventsController < ApplicationController
     end
 
     def edit
+    end 
+
+    def my_asists
+    end
+    
+    def my_events
+        @events = Event.all
     end
 
     def create
