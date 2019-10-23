@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
     before_action :find_event, except: [:index, :create, :new]
-    
+
     def index
         @events = Event.all
     end
@@ -22,8 +22,13 @@ class EventsController < ApplicationController
 
     def update
         @event.update(title: params[:event][:title], cover: params[:event][:cover], date: params[:event][:date], location: params[:event][:location], description: params[:event][:description])
-        
+
         redirect_to @event
+    end
+
+    def destroy
+      @event.destroy
+      redirect_to root_path
     end
 
     private
