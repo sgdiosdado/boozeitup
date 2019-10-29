@@ -31,6 +31,10 @@ class EventsController < ApplicationController
       redirect_to root_path
     end
 
+    def confirmation
+
+    end
+
     private
 
     def find_event
