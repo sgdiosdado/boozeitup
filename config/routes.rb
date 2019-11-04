@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "events/new", to: "events#new", as: :event_new
   get "events/:id", to: "events#show"
   get "events/:id/edit", to: "events#edit", as: :event_edit
-  get "events/:id/confirmation", to: "events#confirmation"
+  get "events/:id/confirmation", to: "events#confirmation", as: :event_confirmation
 
   patch "events/:id", to: "events#update", as: :event
   post "events", to: "events#create"

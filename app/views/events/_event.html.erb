@@ -10,6 +10,6 @@
         </div>
         <footer class="card-footer">
             <%= link_to "Edit", event_edit_path(event), class: "card-footer-item"%>
-            <%= link_to "Delete", event, method: :delete, data: {confirm: 'Are you sure'}, class: "card-footer-item"%>
+            <%= link_to "Delete",event_confirmation_path(event), class: "card-footer-item"%>
         </footer>
-    </div>
+  </div>

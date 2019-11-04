@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-    before_action :find_event, except: [:index, :create, :new]
+    before_action :find_event, except: [:index, :create, :new,]
 
     def index
         @events = Event.all
@@ -22,7 +22,6 @@ class EventsController < ApplicationController
 
     def update
         @event.update(title: params[:event][:title], cover: params[:event][:cover], date: params[:event][:date], location: params[:event][:location], description: params[:event][:description])
-
         redirect_to @event
     end
 
@@ -32,7 +31,8 @@ class EventsController < ApplicationController
     end
 
     def confirmation
-
+      redirect_to root_path
+      flash[:danger] = "Are you sure you want to delete the event? <a class='button is-small' data-method='delete' href='events/#{@event.id}' role='button'> Yes</a>"
     end
 
     private
