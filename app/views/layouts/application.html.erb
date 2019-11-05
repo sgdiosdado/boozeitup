@@ -6,7 +6,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
   </head>
   <body class="has-navbar-fixed-bottom">
     <section class="hero is-info is-bold">
@@ -32,6 +33,16 @@
     </nav>
   </div>
     </section>
+
+    <div id= "warning" class="container">
+        <% flash.each do |name,message| %>
+          <div id="message" class="message-header <%= name %>">
+            <p><%=message.html_safe %></p>
+            <button class="delete is-small" data-dismiss="true" aria-label="delete"><span>&times;</span></button>
+          </div>
+        <%end%>
+    </div>
+
     <section class="container content_padding">
       <%= yield %>
     </section>
