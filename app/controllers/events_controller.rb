@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-    before_action :find_event, except: [:index, :create, :new, :my_events, :my_asists]
+    before_action :find_event, except: [:index, :create, :new, :my_events, :my_asists,]
 
     def index
     end
@@ -34,7 +34,7 @@ class EventsController < ApplicationController
 
     def destroy
       @event.destroy
-      redirect_to root_path
+      redirect_to my_events_path
     end
 
     def confirmation

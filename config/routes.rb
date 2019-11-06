@@ -9,10 +9,8 @@ Rails.application.routes.draw do
   get "events/:id", to: "events#show"
   get "events/:id/edit", to: "events#edit", as: :event_edit
   get "events/:id/confirmation", to: "events#confirmation", as: :event_confirmation
+  delete "events/:id", to: "events#destroy"
 
   patch "events/:id", to: "events#update", as: :event
   post "events", to: "events#create"
-
-  delete "events/:id", to: "events#destroy", as: :event_destroy
-
 end
