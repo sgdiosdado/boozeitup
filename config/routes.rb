@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get "events/my_asists", to: "events#my_asists", as: :my_asists
   get "events/:id", to: "events#show"
   get "events/:id/edit", to: "events#edit", as: :event_edit
-  get "events/:id/confirmation", to: "events#confirmation", as: :event_confirmation
   delete "events/:id", to: "events#destroy"
 
   patch "events/:id", to: "events#update", as: :event

@@ -34,16 +34,7 @@
   </div>
     </section>
 
-    <div id= "warning" class="container">
-        <% flash.each do |name,message| %>
-          <div id="message" class="message-header <%= name %>">
-            <p><%=message.html_safe %></p>
-            <button class="delete is-small" data-dismiss="true" aria-label="delete"><span>&times;</span></button>
-          </div>
-        <%end%>
-    </div>
-
-    <section class="container content_padding">
+   <section class="container content_padding">
       <%= yield %>
     </section>
     <nav class="navbar is-fixed-bottom" role="navigation" aria-label="main navigation">
