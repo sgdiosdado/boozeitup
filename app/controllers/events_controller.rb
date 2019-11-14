@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
     before_action :find_event, except: [:index, :create, :new, :my_events, :my_asists]
-    
+    before_action :authenticate_user!
     def index
     end
 
