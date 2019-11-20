@@ -2,4 +2,10 @@
 <%= content_for :page_subtitle, "All the upcoming events!"%>
 
 
-<h2 class="subtitle">Currently, there's no events nearby :-(</h2>
+<% if @events.empty? %>
+    <h2 class="subtitle">Currently, there's no events nearby :-(</h2>
+<%else%>
+    <%= render @events %>
+<% end %>
+  
+

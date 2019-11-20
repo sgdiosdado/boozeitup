@@ -2,6 +2,12 @@ class EventsController < ApplicationController
     before_action :find_event, except: [:index, :create, :new, :my_events, :my_asists]
     before_action :authenticate_user!
     def index
+        @events = []
+        Event.all.each do |event|
+            if (event.creator != current_user.id)
+                @events << event
+            end
+        end
     end
 
     def show
@@ -18,11 +24,16 @@ class EventsController < ApplicationController
     end
     
     def my_events
-        @events = Event.all
+        @events = []
+        Event.all.each do |event|
+            if (event.creator == current_user.id)
+                @events << event
+            end
+        end
     end
 
     def create
-        @event = Event.create(title: params[:event][:title], cover: params[:event][:cover], date: params[:event][:date], location: params[:event][:location], description: params[:event][:description])
+        @event = Event.create(creator: current_user.id,title: params[:event][:title], cover: params[:event][:cover], date: params[:event][:date], location: params[:event][:location], description: params[:event][:description])
         redirect_to @event
     end
 
