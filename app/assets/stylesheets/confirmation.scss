@@ -1,13 +1,18 @@
 #warning {
  color: black;
- z-index: 100;
 }
 .container .message-header {
-    background-color: #e8de23;
-    margin: 20px 23px 0;
+    background-color: #e89023;
+    margin: 0 20px;
+    height: 110px;
 }
-#confirmation{
-  position:absolute;
-  z-index: 80;
-  background-color: rgba(12, 12, 12, 0.17);
+#confirmation.container{
+  position: absolute;
+  left: 0;
+  z-index:10;
+  height:100%;
+  width:100%;
+  align-items: center;
+  display: flex;
+  background-color: rgba(12, 12, 12, 0.5);
 }

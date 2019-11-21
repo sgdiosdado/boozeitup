@@ -38,8 +38,8 @@ class EventsController < ApplicationController
     end
 
     def confirmation
-      redirect_to my_events_path
       flash[:danger] = "Are you sure you want to delete this event? <a class= 'button is-small' data-method='delete' href='/events/#{@event.id}' role='button'> 'Yes'</a>"
+      redirect_to my_events_path
     end
 
     private
