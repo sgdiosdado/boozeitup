@@ -1,0 +1,13 @@
+#warning {
+ color: black;
+ z-index: 100;
+}
+.container .message-header {
+    background-color: #e8de23;
+    margin: 20px 23px 0;
+}
+#confirmation{
+  position:absolute;
+  z-index: 80;
+  background-color: rgba(12, 12, 12, 0.17);
+}

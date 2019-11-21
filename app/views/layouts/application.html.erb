@@ -6,11 +6,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
   <body class="has-navbar-fixed-bottom">
-    <section class="hero is-info is-bold">
+    <section style="z-index = 20" class="hero is-info is-bold">
       <div class="hero-body">
         <div class="container">
           <h1 class="title">
@@ -33,8 +33,15 @@
     </nav>
   </div>
     </section>
-
-   <section class="container content_padding">
+    <div id="confirmation" class="container">
+          <% flash.each do |name,message| %>
+            <div id="warning" class="message-header <%= name %>">
+              <p><%=message.html_safe %></p>
+              <button id="cancel" class="delete is-small" data-dismiss="true" aria-label="delete"><span>&times;</span></button>
+            </div>
+          <%end%>
+    </div>
+   <section style="z-index=20" class="container content_padding">
       <%= yield %>
     </section>
     <nav class="navbar is-fixed-bottom" role="navigation" aria-label="main navigation">
@@ -47,6 +54,6 @@
         <%= link_to "Parties I organize", my_events_path, class: "menu-item m-b-md has-text-white"%>
         <%= link_to "Parties I'm going", my_asists_path, class: "menu-item m-b-md has-text-white"%>
       </div>
-      <%= javascript_pack_tag 'contentLoaded', 'data-turbolinks-track': 'reload' %>
+     <%= javascript_pack_tag 'contentLoaded', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
