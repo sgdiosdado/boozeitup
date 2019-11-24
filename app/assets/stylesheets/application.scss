@@ -26,14 +26,21 @@ body {
   position: relative;
 }
 .content_padding {
-  padding: $size-4;
+  padding-left: $size-4;
+  padding-right: $size-4;
 }
 .is-justify-around {
   justify-content: space-around;
 }
+.is-align-center{
+  align-items: center;
+}
 .menu {
   transform: translateX(100%);
-  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
   top: 0;
   right: 0;
   height: 100%;
@@ -42,10 +49,17 @@ body {
     @extend .navbar-item;
   }
   transition: transform 0.3s ease;
+  li {
+    list-style: none;
+  }
+  z-index: 100;
 }
 .open {
   transform: translateX(0);
 }
 a.navbar-item:hover {
   background: none;
+}
+.content{
+  overflow: hidden;
 }

@@ -1,7 +1,7 @@
 <% content_for :page_title, "New Event"%>
 <% content_for :page_subtitle, "Let's throw a party!"%>
 
-<%= form_with(model: @event, local: true) do |form|%>
+<%= form_with(model: @event, local: true, class: "m-b-lg") do |form|%>
   <div class="field">
     <%=form.label :title, class: "label" %>
     <%=form.text_field :title, class: "input", placeholder: "Cumpleaños"%>

@@ -2,12 +2,18 @@ const open = () => {
     const toggle = document.getElementById('toggle');
     const menu = document.getElementById('menu');
 
-    if(toggle){
-        toggle.addEventListener('click', () => {
-            if(menu){
-                menu.classList.toggle('open');
-            }
+    if (toggle && menu) {
+        toggle.addEventListener('click', e => {
+            menu.classList.toggle('open');
+            e.stopPropagation();
         });
+
+        document.addEventListener('click', e => {
+            if (e.target != menu) {
+                menu.classList.remove('open');
+                e.stopPropagation();
+            }
+        })
     }
 }
 open();

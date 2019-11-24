@@ -9,51 +9,50 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
-  <body class="has-navbar-fixed-bottom">
-    <% flash.each do |name,message| %>
-      <div id="confirmation" class="container">
-              <div id="warning" class="message-header <%= name %>">
-                <p><%=message.html_safe %></p>
-                <button id="cancel" class="delete is-small" data-dismiss="true" aria-label="delete"><span>&times;</span></button>
-              </div>
-      </div>
-    <%end%>
-    <section style="z-index = 20" class="hero is-info is-bold">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">
-            <%= yield :page_title%>
-          </h1>
-          <h2 class="subtitle">
-            <%= yield :page_subtitle%>
-          </h2>
+  <% if user_signed_in? %>
+    <body class="has-navbar-fixed-bottom">
+  <%end%>
+    <body>
+      <section class="hero is-info is-bold m-b-md">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              <%= yield :page_title%>
+            </h1>
+            <h2 class="subtitle">
+              <%= yield :page_subtitle%>
+            </h2>
+          </div>
         </div>
-      </div>
-      <div class="hero-foot">
-    <nav class="tabs is-boxed is-fullwidth">
-      <div class="container">
-        <ul>
-          <li>
-            <%= link_to "New", event_new_path%>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </div>
-    </section>
-   <section style="z-index=20" class="container content_padding">
-      <%= yield %>
-    </section>
-    <nav class="navbar is-fixed-bottom" role="navigation" aria-label="main navigation">
-      <div class="navbar-menu is-flex is-justify-around has-background-dark">
-      <%= link_to "Home", root_path, class: "navbar-item has-text-white"%>
-      <a class="navbar-item has-text-white" id="toggle">Menu</a>
-      </div>
-    </nav>
-    <div class="menu has-background-dark p-md" id="menu">
-        <%= link_to "Parties I organize", my_events_path, class: "menu-item m-b-md has-text-white"%>
-        <%= link_to "Parties I'm going", my_asists_path, class: "menu-item m-b-md has-text-white"%>
-      </div>
-     <%= javascript_pack_tag 'contentLoaded', 'data-turbolinks-track': 'reload' %>
-  </body>
-</html>
+      </section>
+      <section class="container content_padding p-b-md">
+        <%= yield %>
+      </section>
+      <% if user_signed_in? %>
+        <nav class="navbar is-fixed-bottom" role="navigation" aria-label="main navigation">
+          <div class="navbar-menu is-flex is-justify-around has-background-dark">
+            <%= link_to root_path, class: "navbar-item has-text-white" do%>
+              <%= image_tag 'home.png'%>
+            <%end%>
+            <%= link_to event_new_path, class: "navbar-item has-text-white is-flex is-align-center" do%>
+              <%= inline_svg "add.svg", size: '32px', style:'fill:white' %>
+            <%end%>
+            <a class="navbar-item has-text-white" id="toggle">
+              <%= image_tag 'menu.png'%>
+            </a>
+          </div>
+        </nav>
+        <div class="menu has-background-dark p-md" id="menu">
+          <div>
+            <%= link_to "Parties I organize", my_events_path, class: "menu-item m-b-md has-text-white"%>
+            <%= link_to "Parties I'm going", my_asists_path, class: "menu-item m-b-md has-text-white"%>
+          </div>
+          <div>
+            <%= render 'devise/menu/registration_items' %>
+            <%= render 'devise/menu/login_items' %>
+          </div>
+        </div>
+      <%end%>
+      <%= javascript_pack_tag 'contentLoaded'%>
+    </body>
+  </html>

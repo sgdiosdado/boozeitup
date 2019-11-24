@@ -1,4 +1,9 @@
 <%= content_for :page_title, "Parties I'm throwing"%>
 <%= content_for :page_subtitle, "Let's lose it!"%>
 
-<%= render @events%>
+<% if @events.empty? %>
+    <h2 class="subtitle">You're not organizing a party. Let's throw one!</h2>
+<%else%>
+    <%= render @events %>
+<% end %>
+  
