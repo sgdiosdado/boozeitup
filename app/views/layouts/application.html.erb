@@ -11,12 +11,17 @@
   </head>
   <body class="has-navbar-fixed-bottom">
     <% flash.each do |name,message| %>
-      <div id="confirmation" class="container">
-              <div id="warning" class="message-header <%= name %>">
-                <p><%=message.html_safe %></p>
-                <button id="cancel" class="delete is-small" data-dismiss="true" aria-label="delete"><span>&times;</span></button>
-              </div>
-      </div>
+    <div id=confirmation class="hero">
+      <article class="message is-warning">
+        <div class="message-header">
+            <p>Warning</p>
+            <button id="cancel" class="delete" aria-label="delete"></button>
+        </div>
+        <div class="message-body <%= name %>">
+            <p><%=message.html_safe %></p>
+        </div>
+      </article>
+    </div>
     <%end%>
     <section style="z-index = 20" class="hero is-info is-bold">
       <div class="hero-body">
