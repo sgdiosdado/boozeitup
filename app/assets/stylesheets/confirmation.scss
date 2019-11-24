@@ -1,18 +1,8 @@
-#warning {
- color: black;
-}
-.container .message-header {
-    background-color: #e89023;
-    margin: 0 20px;
-    height: 110px;
-}
-#confirmation.container{
+#confirmation{
   position: absolute;
-  left: 0;
   z-index:10;
-  height:100%;
-  width:100%;
-  align-items: center;
-  display: flex;
+  height:100vh;
+  width:100vw;
+  padding: 250px 30px;
   background-color: rgba(12, 12, 12, 0.5);
 }
