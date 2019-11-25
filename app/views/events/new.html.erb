@@ -15,14 +15,14 @@
     <%=form.text_field :date, class: "input", placeholder: "2019-12-22"%>
   </div>
   <div class="field">
-    <%=form.label :location, class: "label"%>
-    <%=form.text_field :location, class: "input", placeholder: "Av. Lincoln 2234" %>
-  </div>
-  <div id="here-map"></div>
-  <div class="field">
     <%=form.label :description, class: "label"%>
     <%=form.text_area :description, class: "textarea", placeholder: "Because of reasons..."%>
   </div>
+  <div class="field">
+    <%=form.label :location, class: "label"%>
+    <%=form.text_field :location, class: "input", placeholder: "Av. Lincoln 2234" %>
+  </div>
+  <div id="here-map" class="here-map width-100 m-b-md"></div>
   <%= form.hidden_field :latitude  %>
   <%= form.hidden_field :longitude  %>
   <div class="field">

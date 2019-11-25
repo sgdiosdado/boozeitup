@@ -19,13 +19,13 @@
     <body>
       <% flash.each do |name,message| %>
         <% if flash[:danger] %>
-        <div id=confirmation class="hero">
+        <div id=confirmation class="hero is-flex is-justify-center">
           <article class="message is-warning">
             <div class="message-header">
                 <p>Warning</p>
                 <button id="cancel" class="delete" aria-label="delete"></button>
               </div>
-              <div class="message-body <%= name %>">
+              <div class="message-body has-text-centered <%= name %>">
                 <p><%=message.html_safe %></p>
               </div>
             </article>

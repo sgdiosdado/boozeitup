@@ -35,6 +35,9 @@ body {
 .is-align-center{
   align-items: center;
 }
+.is-justify-center{
+  justify-content: center;
+}
 .menu {
   transform: translateX(100%);
   display: flex;
@@ -72,4 +75,7 @@ a.navbar-item:hover {
 .center-block{
   margin-left: auto;
   margin-right: auto;
+}
+.width-100{
+  width: 100%;
 }
