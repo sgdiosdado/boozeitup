@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "events/new", to: "events#new", as: :event_new
   get "events/my_events", to: "events#my_events", as: :my_events
   get "events/my_asists", to: "events#my_asists", as: :my_asists
+  get "events/event_get_location_details/:locationid", to: 'events#event_get_location_details', as: :event_get_location_details
   get "events/event_location_suggestions/:address", to: 'events#event_location_suggestions', as: :event_location_suggestions
   get "events/:id", to: "events#show"
   get "events/:id/edit", to: "events#edit", as: :event_edit

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-    before_action :find_event, except: [:index, :create, :new, :my_events, :my_asists, :event_location_suggestions]
+    before_action :find_event, except: [:index, :create, :new, :my_events, :my_asists, :event_location_suggestions, :event_get_location_details]
     before_action :authenticate_user!
     def index
         @events = []
@@ -40,12 +40,12 @@ class EventsController < ApplicationController
     end
 
     def create
-        @event = Event.create(creator: current_user.id,title: params[:event][:title], cover: params[:event][:cover], date: params[:event][:date], location: params[:event][:location], description: params[:event][:description])
+        @event = Event.create(creator: current_user.id,title: params[:event][:title], cover: params[:event][:cover], date: params[:event][:date], description: params[:event][:description])
         redirect_to @event
     end
 
     def update
-        @event.update(title: params[:event][:title], cover: params[:event][:cover], date: params[:event][:date], location: params[:event][:location], description: params[:event][:description])
+        @event.update(title: params[:event][:title], cover: params[:event][:cover], date: params[:event][:date], latitude: params[:event][:latitude], longitude: params[:event][:longitude], description: params[:event][:description])
         
         redirect_to @event
     end
@@ -59,6 +59,12 @@ class EventsController < ApplicationController
         @here = Apis::HereApi.new(params[:address]).get_suggestions
         render json: @here
     end
+
+    def event_get_location_details
+        @loc = Apis::HereApi.new("").get_location_details(params[:locationid])
+        render json: @loc
+    end
+
 
     private
 

@@ -23,7 +23,9 @@
     <%=form.label :description, class: "label"%>
     <%=form.text_area :description, class: "textarea", placeholder: "Because of reasons..."%>
   </div>
+  <%= form.hidden_field :latitude  %>
+  <%= form.hidden_field :longitude  %>
   <div class="field">
-    <%=form.submit class:"button is-link"%>
+    <%=form.submit class:"button is-link", id:"submit-new-event"%>
   </div>
 <%end%>
