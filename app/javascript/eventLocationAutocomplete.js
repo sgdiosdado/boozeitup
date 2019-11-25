@@ -6,6 +6,31 @@ function boldify(arr, b, val, i){
     // b.innerHTML += arr[i].substr(val.length);
 }
 
+function setMarker(loc){
+  if (window.map){
+    let map = window.map;
+    // Define a variable holding SVG mark-up that defines an icon image:
+    var svgMarkup = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path d="M12 0c-5.522 0-10 4.395-10 9.815 0 5.505 4.375 9.268 10 14.185 5.625-4.917 10-8.68 10-14.185 0-5.42-4.478-9.815-10-9.815zm0 18c-4.419 0-8-3.582-8-8s3.581-8 8-8 8 3.582 8 8-3.581 8-8 8zm4-8v4h-3v-2h-2v2h-3v-4h-1l5-5 5 5h-1zm-1-3l-1-.991v-1.009h1v2z" style="fill: orange;"/></svg>`
+
+    // Create an icon, an object holding the latitude and longitude, and a marker:
+    var icon = new H.map.Icon(svgMarkup),
+    coords = {lat: loc.latitude, lng: loc.longitude},
+    marker = new H.map.Marker(coords, {icon: icon})
+    // Add the marker to the map and center the map at the location of the marker:
+    map.removeObjects(map.getObjects()) // Removes previous markers
+    map.addObject(marker);
+    map.setCenter(coords);
+    map.setZoom(16);
+    // Add values to hidden latitude and longitude form fields
+    let latitude = document.getElementById("event_latitude");
+    let longitude = document.getElementById("event_longitude");
+
+    latitude.value = loc.latitude;
+    longitude.value = loc.longitude;
+
+  }
+}
+
 function autocomplete(inp, arr, coord) {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
@@ -46,36 +71,9 @@ function autocomplete(inp, arr, coord) {
                         
                         req.open("GET", url);
                         req.send();
-
-                        req.onloadend = (e) => {
+                        req.onloadend = (e) => {                          
                           let loc = req.response.response.view[0].result[0].location.displayPosition;
-                          if (window.map){
-                            let map = window.map;
-                            // Define a variable holding SVG mark-up that defines an icon image:
-                            var svgMarkup = '<svg width="24" height="24" ' +
-                            'xmlns="http://www.w3.org/2000/svg">' +
-                            '<rect stroke="white" fill="#1b468d" x="1" y="1" width="22" ' +
-                            'height="22" /><text x="12" y="18" font-size="12pt" ' +
-                            'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
-                            'fill="white">H</text></svg>';
-
-                            // Create an icon, an object holding the latitude and longitude, and a marker:
-                            var icon = new H.map.Icon(svgMarkup),
-                            coords = {lat: loc.latitude, lng: loc.longitude},
-                            marker = new H.map.Marker(coords, {icon: icon})
-                            // Add the marker to the map and center the map at the location of the marker:
-                            map.removeObjects(map.getObjects()) // Removes previous markers
-                            map.addObject(marker);
-                            map.setCenter(coords);
-                            map.setZoom(16);
-                            // Add values to hidden latitude and longitude form fields
-                            let latitude = document.getElementById("event_latitude");
-                            let longitude = document.getElementById("event_longitude");
-
-                            latitude.value = loc.latitude;
-                            longitude.value = loc.longitude;
-
-                          }
+                          setMarker(loc);
                         }
                     }
                 }

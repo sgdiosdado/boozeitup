@@ -69,14 +69,15 @@ class EventsController < ApplicationController
     # Function: create
     # Creates a new instance of Event, pass all the parameters from the user and make a persistent record in the database.
     def create
-        @event = Event.create(creator: current_user.id,title: params[:event][:title], cover: params[:event][:cover], date: params[:event][:date], description: params[:event][:description])
+        @event = Event.create(creator: current_user.id,title: params[:event][:title], cover: params[:event][:cover], date: params[:event][:date], description: params[:event][:description], latitude: params[:event][:latitude], longitude: params[:event][:longitude], address: params[:event][:location])
         redirect_to @event
     end
 
     # Function: update
     # Updates an existing instance of Event, pass all the parameters from the user and update the persistent record in the database.
     def update
-        @event.update(title: params[:event][:title], cover: params[:event][:cover], date: params[:event][:date], latitude: params[:event][:latitude], longitude: params[:event][:longitude], description: params[:event][:description])
+        @event.update(title: params[:event][:title], cover: params[:event][:cover], date: params[:event][:date], latitude: params[:event][:latitude], longitude: params[:event][:longitude], description: params[:event][:description], address: params[:event][:location])
+        
         redirect_to @event
     end
 
