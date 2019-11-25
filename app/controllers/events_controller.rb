@@ -19,7 +19,7 @@ class EventsController < ApplicationController
     end
 
     def edit
-    end 
+    end
 
     def my_asists
         @events = []
@@ -29,7 +29,7 @@ class EventsController < ApplicationController
             end
         end
     end
-    
+
     def my_events
         @events = []
         Event.all.each do |event|
@@ -46,8 +46,18 @@ class EventsController < ApplicationController
 
     def update
         @event.update(title: params[:event][:title], cover: params[:event][:cover], date: params[:event][:date], location: params[:event][:location], description: params[:event][:description])
-        
+
         redirect_to @event
+    end
+
+    def destroy
+      @event.destroy
+      redirect_to my_events_path
+    end
+
+    def confirmation
+      flash[:danger] = "Are you sure you want to delete this event? <a class='button is-danger is-block center-block' style='width: 50%;' data-method='delete' href='/events/#{@event.id}'> Yes</a>"
+      redirect_to my_events_path
     end
 
     def create_attend
