@@ -10,7 +10,7 @@
         <% if current_user.id == event.creator %>
         <footer class="card-footer">
             <%= link_to "Edit", event_edit_path(event), class: "card-footer-item"%>
-            <%= link_to "Delete", "#", class: "card-footer-item"%>
+            <%= link_to "Delete", event_confirmation_path(event), id: "eliminate",class: "card-footer-item"%>
         </footer>
         <%end%>
     </div>

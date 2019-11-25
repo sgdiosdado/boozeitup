@@ -7,11 +7,25 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
   <% if user_signed_in? %>
     <body class="has-navbar-fixed-bottom">
   <%end%>
     <body>
+      <% flash.each do |name,message| %>
+      <div id=confirmation class="hero">
+        <article class="message is-warning">
+          <div class="message-header">
+              <p>Warning</p>
+              <button id="cancel" class="delete" aria-label="delete"></button>
+          </div>
+          <div class="message-body <%= name %>">
+              <p><%=message.html_safe %></p>
+          </div>
+        </article>
+      </div>
+      <%end%>
       <section class="hero is-info is-bold m-b-md">
         <div class="hero-body">
           <div class="container">

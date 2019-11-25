@@ -65,6 +65,16 @@ class EventsController < ApplicationController
         redirect_to @event
     end
 
+    def destroy
+      @event.destroy
+      redirect_to my_events_path
+    end
+
+    def confirmation
+      flash[:danger] = "Are you sure you want to delete this event? <a class='button is-success is-hovered' data-method='delete' href='/events/#{@event.id}'> Yes</a>"
+      redirect_to my_events_path
+    end
+
     private
 
     def find_event
