@@ -1,9 +1,28 @@
 <%= content_for :page_title, @event.title%>
 <%= content_for :page_subtitle, @event.date.to_date.to_formatted_s(:long) %>
+<%= content_for :cover, "Cover: $" << number_with_precision(@event.cover, precision:2) %>
 
-<p><strong>Description</strong></p>
-<p><%= @event.description %></p>
-<p><strong>Cover</strong></p>
-<p>$<%= number_with_precision(@event.cover, precision:2) %></p>
-<p><strong>Location</strong></p>
-<p><%= @event.location %></p>
+<div>
+    <p class="has-text-grey">Description</p>
+    <div class="hero is-light">
+        <p class="space"><%= @event.description %></p>
+    </div>
+</div>
+<div>
+    <p class="has-text-grey">Address</p>
+    <div class="hero is-light">
+        <p class="space"><%= @event.location %></p>
+    </div>
+</div>
+<div>
+    <p class="has-text-grey">Map</p>
+    <div class="hero is-light">
+        <p class="space"></p>
+    </div>
+</div>
+
+<% if current_user.id != @event.creator %>
+  <div class="button-margin">
+    <button class="button is-link is-fullwidth">Attend!</button>
+  </div>
+<%end%>
