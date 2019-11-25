@@ -14,17 +14,19 @@
   <%end%>
     <body>
       <% flash.each do |name,message| %>
-      <div id=confirmation class="hero">
-        <article class="message is-warning">
-          <div class="message-header">
-              <p>Warning</p>
-              <button id="cancel" class="delete" aria-label="delete"></button>
+        <% if flash[:danger] %>
+        <div id=confirmation class="hero">
+          <article class="message is-warning">
+            <div class="message-header">
+                <p>Warning</p>
+                <button id="cancel" class="delete" aria-label="delete"></button>
+              </div>
+              <div class="message-body <%= name %>">
+                <p><%=message.html_safe %></p>
+              </div>
+            </article>
           </div>
-          <div class="message-body <%= name %>">
-              <p><%=message.html_safe %></p>
-          </div>
-        </article>
-      </div>
+          <%end%>
       <%end%>
       <section class="hero is-info is-bold m-b-md">
         <div class="hero-body">

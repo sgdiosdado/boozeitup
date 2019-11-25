@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get "events/:id/confirmation", to: "events#confirmation", as: :event_confirmation
   get "events/:id", to: "events#show"
   get "events/:id/edit", to: "events#edit", as: :event_edit
+
+  delete "events/:id", to: "events#destroy"
+
   patch "events/:id", to: "events#update", as: :event
   post "events", to: "events#create"
   post "events/:id", to: "events#create_attend", as: :create_attend

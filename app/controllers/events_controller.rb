@@ -50,29 +50,19 @@ class EventsController < ApplicationController
         redirect_to @event
     end
 
-    def destroy
-      @event.destroy
-      redirect_to my_events_path
-    end
-
-    def confirmation
-      flash[:danger] = "Are you sure you want to delete this event? <a class='button is-danger is-block center-block' style='width: 50%;' data-method='delete' href='/events/#{@event.id}'> Yes</a>"
-      redirect_to my_events_path
-    end
-
     def create_attend
         @attend = Attend.create(userID: current_user.id, eventID: @event.id)
         redirect_to @event
     end
 
-    def destroy
-      @event.destroy
+    def confirmation
+      flash[:danger]= "Are you sure you want to delete this event? <a class='button is-danger is-block center-block' style='width: 50%;'  data-method='delete' href='/events/#{@event.id}'> Yes</a>"
       redirect_to my_events_path
     end
 
-    def confirmation
-      flash[:danger] = "Are you sure you want to delete this event? <a class='button is-success is-hovered' data-method='delete' href='/events/#{@event.id}'> Yes</a>"
-      redirect_to my_events_path
+    def destroy
+        @event.destroy
+        redirect_to my_events_path
     end
 
     private
