@@ -98,6 +98,11 @@ class EventsController < ApplicationController
     # Function: destroy
     # Deletes an existing instance of Event from the database.
     def destroy
+        Attend.all.each do |attend|
+            if (attend.eventID == @event.id)
+                attend.destroy
+            end
+        end
         @event.destroy
         redirect_to my_events_path
     end
