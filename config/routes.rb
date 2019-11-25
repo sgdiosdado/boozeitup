@@ -19,10 +19,10 @@ Rails.application.routes.draw do
   get "events/:id/confirmation", to: "events#confirmation", as: :event_confirmation
 
   # Calls the API for the location details
-  get "events/event_get_location_details/:locationid", to: 'events#event_get_location_details', as: :event_get_location_details
+  get "events/event_get_location_details/:locationid", to: 'events#event_get_location_details', constraints: { locationid: /[^\/]+/}, as: :event_get_location_details
 
   # Calls the API for the best five suggestions
-  get "events/event_location_suggestions/:address", to: 'events#event_location_suggestions', as: :event_location_suggestions
+  get "events/event_location_suggestions/:address", to: 'events#event_location_suggestions', constraints: { address: /[^\/]+/ }, as: :event_location_suggestions
   
   # View to show details of an specific event
   get "events/:id", to: "events#show"

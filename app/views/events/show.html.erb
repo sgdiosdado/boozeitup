@@ -9,7 +9,13 @@
     </div>
 </div>
 <div>
-    <p class="has-text-grey">Map</p>
+    <p class="has-text-grey">Address</p>
+    <div class="hero is-light m-b-md">
+        <p class="space "><%= @event.address %></p>
+    </div>
+</div>
+<div>
+    <p class="has-text-grey" id="here-map" lon="<%=@event.longitude%>" lat="<%=@event.latitude%>">Map</p>
     <div class="hero is-light m-b-md">
         <p class="space "></p>
     </div>
