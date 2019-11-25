@@ -18,7 +18,7 @@
 <% if (current_user.id != @event.creator) %>
     <% if (@attending) %>
     <div>
-        <%= link_to 'Attend!', create_attend_path, method: :post, class: "button is-link is-fullwidth" %>
+        <%= link_to 'Pay!', create_attend_path, method: :post, class: "button is-link is-fullwidth" %>
     </div>
     <%else%>
         <article class="message is-success">
