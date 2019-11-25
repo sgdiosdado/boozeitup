@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   
   patch "events/:id", to: "events#update", as: :event
   post "events", to: "events#create"
+  post "events/:id", to: "events#create_attend", as: :create_attend
 
 end

@@ -11,6 +11,7 @@ class EventsController < ApplicationController
     end
 
     def show
+        @attending = attending?
     end
 
     def new
@@ -21,6 +22,12 @@ class EventsController < ApplicationController
     end 
 
     def my_asists
+        @events = []
+        Attend.all.each do |attend|
+            if (attend.userID == current_user.id)
+                @events << Event.find(attend.eventID)
+            end
+        end
     end
     
     def my_events
@@ -43,9 +50,20 @@ class EventsController < ApplicationController
         redirect_to @event
     end
 
+    def create_attend
+        @attend = Attend.create(userID: current_user.id, eventID: @event.id)
+        redirect_to @event
+    end
+
     private
 
     def find_event
         @event = Event.find(params[:id])
+    end
+
+    def attending?
+        user_id = current_user.id
+        event_id = @event.id
+        return (Attend.where(userID: user_id, eventID: event_id).empty?)
     end
 end

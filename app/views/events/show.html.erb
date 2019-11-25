@@ -4,25 +4,33 @@
 
 <div>
     <p class="has-text-grey">Description</p>
-    <div class="hero is-light">
-        <p class="space"><%= @event.description %></p>
+    <div class="hero is-light m-b-md">
+        <p class="space "><%= @event.description %></p>
     </div>
 </div>
 <div>
     <p class="has-text-grey">Address</p>
-    <div class="hero is-light">
-        <p class="space"><%= @event.location %></p>
+    <div class="hero is-light m-b-md">
+        <p class="space "><%= @event.location %></p>
     </div>
 </div>
 <div>
     <p class="has-text-grey">Map</p>
-    <div class="hero is-light">
-        <p class="space"></p>
+    <div class="hero is-light m-b-md">
+        <p class="space "></p>
     </div>
 </div>
 
-<% if current_user.id != @event.creator %>
-  <div class="button-margin">
-    <button class="button is-link is-fullwidth">Attend!</button>
-  </div>
+<% if (current_user.id != @event.creator) %>
+    <% if (@attending) %>
+    <div>
+        <%= link_to 'Attend!', create_attend_path, method: :post, class: "button is-link is-fullwidth" %>
+    </div>
+    <%else%>
+        <article class="message is-success">
+            <div class="message-header">
+                 <p class="center-block">You're attending!</p>
+            </div>
+        </article>  
+    <%end%>  
 <%end%>
