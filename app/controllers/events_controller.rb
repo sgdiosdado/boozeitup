@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-    before_action :find_event, except: [:index, :create, :new, :my_events, :my_asists]
+    before_action :find_event, except: [:index, :create, :new, :my_events, :my_asists, :event_location_suggestions]
     before_action :authenticate_user!
     def index
         @events = []
@@ -63,6 +63,11 @@ class EventsController < ApplicationController
     def destroy
         @event.destroy
         redirect_to my_events_path
+    end
+    
+    def event_location_suggestions
+        @here = Apis::HereApi.new(params[:address]).get_suggestions
+        render json: @here
     end
 
     private
